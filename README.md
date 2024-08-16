@@ -8,6 +8,7 @@
 7. cd danmusic
 8. pip install pytube
 9. pip install python-vlc
-10. pip install colorama
-11. ls
-12. python danmusic.py
+10. pip install youtube-dl
+11. pip install colorama
+12. ls
+13. python danmusic.py
