@@ -2,6 +2,7 @@ import vlc
 import youtube_dl
 import time
 from colorama import Fore, Style, init
+from pyfiglet import figlet_format
 
 # Inisialisasi colorama
 init(autoreset=True)
@@ -27,21 +28,14 @@ def stop_music(player):
 
 def print_large_text(text, color):
     """Print text in a large font and specified color."""
-    large_text = f"""
-{color}   ____            __         __      _ _ 
-  |  _ \ ___  __ _| |_ __ _| | _____| | | ___
-  | |_) / _ \/ _` | __/ _` | |/ / _ \ | |/ _ \
-  |  __/  __/ (_| | || (_| |   <  __/ | |  __/
-  |_|   \___|\__,_|\__\__,_|_|\_\___|_|_|\___|
-
-{Style.RESET_ALL}
-    """
-    print(large_text)
+    large_text = figlet_format(text, font="slant")  # Menggunakan font 'slant' dari pyfiglet
+    print(color + large_text + Style.RESET_ALL)
 
 def main():
     player = None
     while True:
         print_large_text("Danvertt", Fore.GREEN)  # Teks besar dengan warna hijau
+        print("TOOLS SEDERHANA PEMUTAR MUSIC BY LINK YOUTUBE!")
         print("Menu:")
         print("1. Putar Musik")
         print("2. Stop Musik")
