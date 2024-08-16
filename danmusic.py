@@ -1,5 +1,5 @@
 import vlc
-import pafy
+import youtube_dl
 import time
 from colorama import Fore, Style, init
 
@@ -7,10 +7,18 @@ from colorama import Fore, Style, init
 init(autoreset=True)
 
 def play_music(url):
-    video = pafy.new(url)
-    bestaudio = video.getbestaudio()
-    playurl = bestaudio.url
-    player = vlc.MediaPlayer(playurl)
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': 'temp_audio.%(ext)s',
+        'noplaylist': True,
+        'quiet': True
+    }
+    
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(url, download=False)
+        audio_url = info_dict['formats'][0]['url']
+
+    player = vlc.MediaPlayer(audio_url)
     player.play()
     return player
 
@@ -34,7 +42,6 @@ def main():
     player = None
     while True:
         print_large_text("Danvertt", Fore.GREEN)  # Teks besar dengan warna hijau
-        print("Tools Sederhana Pemutar Music by Link Youtube!")
         print("Menu:")
         print("1. Putar Musik")
         print("2. Stop Musik")
