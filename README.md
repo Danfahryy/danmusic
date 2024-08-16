@@ -10,5 +10,6 @@
 9. pip install python-vlc
 10. pip install youtube-dl
 11. pip install colorama
-12. ls
-13. python danmusic.py
+12. pip install pyfiglet
+13. ls
+14. python danmusic.py
